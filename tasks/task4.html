@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/task4.css" />
+    <title>Задание 4</title>
+  </head>
+  <body>
+    <h1>Задание 4</h1>
+    <p>Введите секретное слово. P.S - имя автора</p>
+    <div id="secret" style="display: none">
+      Попался. Секретное слово это Райан Гослинг в фильме ...
+    </div>
+    <div id="realSecret" style="display: none">
+      Секрет крабсбургера в том, что он из краба
+    </div>
+    <script>
+      // Base64 скрытый код
+      const encodedSecretCode = "cmluYXQ="; // "rinat"
+      const encodedRealSecretCode = "ZHJpdmU="; // "drive"
+
+      function decodeBase64(encodedString) {
+        return atob(encodedString);
+      }
+
+      const secretCode = decodeBase64(encodedSecretCode).split("");
+      const realSecretCode = decodeBase64(encodedRealSecretCode).split("");
+
+      let enteredCode = [];
+      document.addEventListener("keydown", function (event) {
+        enteredCode.push(event.key);
+        enteredCode = enteredCode.slice(-secretCode.length);
+        if (enteredCode.join("") === secretCode.join("")) {
+          document.getElementById("secret").style.display = "block";
+        }
+      });
+
+      let realEnteredCode = [];
+      document.addEventListener("keydown", function (event) {
+        realEnteredCode.push(event.key);
+        realEnteredCode = realEnteredCode.slice(-realSecretCode.length);
+        if (realEnteredCode.join("") === realSecretCode.join("")) {
+          document.getElementById("realSecret").style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html>

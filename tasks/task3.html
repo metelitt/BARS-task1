@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/task3.css" />
+    <title>Задание с элементами списка</title>
+  </head>
+  <body>
+    <h1>Задание 3</h1>
+    <ul id="itemList">
+      <li>Элемент 1</li>
+      <li>Элемент 2</li>
+      <li>Элемент 3</li>
+      <li>Элемент 4</li>
+      <li>Элемент 5</li>
+    </ul>
+
+    <script>
+      document
+        .getElementById("itemList")
+        .addEventListener("click", function (event) {
+          if (event.target && event.target.nodeName === "LI") {
+            console.log(event.target.textContent);
+          }
+        });
+    </script>
+  </body>
+</html>
